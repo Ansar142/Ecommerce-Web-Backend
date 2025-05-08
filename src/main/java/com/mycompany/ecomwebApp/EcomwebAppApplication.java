@@ -1,0 +1,13 @@
+package com.mycompany.ecomwebApp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class EcomwebAppApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(EcomwebAppApplication.class, args);
+	}
+
+}
