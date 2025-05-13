@@ -1,10 +1,7 @@
 package com.mycompany.ecomwebApp.Model;
-
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,26 +9,58 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.Date;
 
-    @Entity
-    @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public class Item {
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+//@JsonIgnoreProperties(ignoreUnknown = true)
+public class Item {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int id;
-        private String name;
-        private String description;
-        private String brand;
-        private BigDecimal price;
-        private String category;
-        @JsonFormat(pattern = "yyyy-MM-dd")
-        private Date releaseDate;
-        private boolean productAvailable;
-        private int stockQuantity;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String name;
+    private String description;
+    private String brand;
+    private BigDecimal price;
+    private String category;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private Date releaseDate;
 
-        
+    private boolean productAvailable;
+    private int stockQuantity;
+    private String imageName ;
+    private String imageType ;
+    //@Lob
+    private byte[] imageData ;
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public Item setImageName(String imageName) {
+        this.imageName = imageName;
+        return this;
+    }
+
+    public String getImageType() {
+        return imageType;
+    }
+
+    public Item setImageType(String imageType) {
+        this.imageType = imageType;
+        return this;
+    }
+
+    public byte[] getImageData() {
+        return imageData;
+    }
+
+    public Item setImageData(byte[] imageData) {
+        this.imageData = imageData;
+        return this;
+    }
+
     public int getId() {
         return id;
     }
@@ -104,6 +133,4 @@ import java.util.Date;
         this.stockQuantity = stockQuantity;
     }
 
-
-    }
-
+}
